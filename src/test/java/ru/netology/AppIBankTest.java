@@ -40,7 +40,6 @@ public class AppIBankTest {
 
     @Test
     public void shouldOpenTransferPage(){
-        open("http://localhost:9999");
         var loginPage = open("http://localhost:9999", LoginPage.class);
         var authUser = DataGen.getUserHardCode();
         var verificationPge = loginPage.validLogin(authUser);
