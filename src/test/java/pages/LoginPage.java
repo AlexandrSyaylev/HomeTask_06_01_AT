@@ -1,9 +1,8 @@
-package Pages;
+package pages;
 
-import DataGenerator.DataGen;
+import dataGenerator.DataGen;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 
 import static com.codeborne.selenide.Selenide.page;

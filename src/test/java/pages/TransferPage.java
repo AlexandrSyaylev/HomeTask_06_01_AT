@@ -1,6 +1,5 @@
-package Pages;
+package pages;
 
-import DataGenerator.DataGen;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -15,12 +14,10 @@ public class TransferPage {
     private SelenideElement submitButton;
 
     public DashboardPage transferMoney(String amount, String id) {
-        //open("http://localhost:9999");
         amountField.setValue(amount);
         fromField.setValue(id);
         submitButton.click();
         return page(DashboardPage.class);
     }
-    /*data-test-ud='error-notification'
-    Ошибка!*/
+
 }

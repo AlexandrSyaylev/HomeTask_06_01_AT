@@ -1,13 +1,9 @@
-package Pages;
+package pages;
 
-import DataGenerator.DataGen;
+import dataGenerator.DataGen;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactoryFinder;
 
-import java.time.Duration;
-
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
 
