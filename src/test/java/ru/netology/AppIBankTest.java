@@ -28,7 +28,7 @@ public class AppIBankTest {
         var page = verificationPge.validVerify(authUser);
         int startValueCardOne = DataGen.getFirstCard();
         int startValueCardTwo = DataGen.getSecondCard();
-        var moneyTransfer = page.upToMoneyOnThisCard(DataGen.getFirstCardId());
+        var moneyTransfer = page.upToMoneyOnThisCard(DataGen.getFirstSecretId());
         var enterAmount = moneyTransfer.transferMoney(String.valueOf(amountToTransfer), DataGen.getSecondCardId());
         $(withText("Ваши карты")).shouldBe(visible);
         int expectedCardOne = startValueCardOne + amountToTransfer;

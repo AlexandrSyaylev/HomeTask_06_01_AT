@@ -27,8 +27,8 @@ public class DataGen {
         private final String balanceStart = "баланс: ";
         private final String balanceFinish = " р.";
 
-        /*private String firstCardId = "**** **** **** 0001";
-        private String secondCardId = "**** **** **** 0002";*/
+        private String firstSecretCardId = "**** **** **** 0001";
+        private String secondSecretCardId = "**** **** **** 0002";
         private String firstCardId = "5559 0000 0000 0001";
         private String secondCardId = "5559 0000 0000 0002";
 
@@ -45,8 +45,8 @@ public class DataGen {
             return Integer.parseInt(value);
         }
 
-        public int getFirstCardBal() { return getCardBalance(firstCardId); }
-        public int getSecondCardBal(){ return getCardBalance(secondCardId);}
+        public int getFirstCardBal() { return getCardBalance(firstSecretCardId); }
+        public int getSecondCardBal(){ return getCardBalance(secondSecretCardId);}
 
 
 
@@ -59,4 +59,5 @@ public class DataGen {
     public static int getSecondCard(){ return new Card().getSecondCardBal();}
     public static String getFirstCardId(){ return new Card().firstCardId;}
     public static String getSecondCardId(){ return new Card().secondCardId;}
+    public static String getFirstSecretId(){ return new Card().firstSecretCardId;}
 }
