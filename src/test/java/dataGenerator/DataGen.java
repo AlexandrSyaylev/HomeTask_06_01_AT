@@ -27,6 +27,11 @@ public class DataGen {
         private final String balanceStart = "баланс: ";
         private final String balanceFinish = " р.";
 
+        /*private String firstCardId = "**** **** **** 0001";
+        private String secondCardId = "**** **** **** 0002";*/
+        private String firstCardId = "5559 0000 0000 0001";
+        private String secondCardId = "5559 0000 0000 0002";
+
 
         public int getCardBalance(String id) {
             val text = cards.findBy(Condition.text(id)).text();
@@ -39,13 +44,19 @@ public class DataGen {
             val value = text.substring(start + balanceStart.length(), finish);
             return Integer.parseInt(value);
         }
+
+        public int getFirstCardBal() { return getCardBalance(firstCardId); }
+        public int getSecondCardBal(){ return getCardBalance(secondCardId);}
+
+
+
     }
 
     public static UserAuth getUserHardCode() {
         return new UserAuth("vasya", "qwerty123", "12345");
     }
-
-    public static int getBalanceCard(String id) {
-        return new Card().getCardBalance(id);
-    }
+    public static int getFirstCard() { return new Card().getFirstCardBal(); }
+    public static int getSecondCard(){ return new Card().getSecondCardBal();}
+    public static String getFirstCardId(){ return new Card().firstCardId;}
+    public static String getSecondCardId(){ return new Card().secondCardId;}
 }

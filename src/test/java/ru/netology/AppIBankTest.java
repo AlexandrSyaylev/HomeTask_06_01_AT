@@ -26,15 +26,15 @@ public class AppIBankTest {
         var authUser = DataGen.getUserHardCode();
         var verificationPge = loginPage.validLogin(authUser);
         var page = verificationPge.validVerify(authUser);
-        int startValueCardOne = DataGen.getBalanceCard("**** **** **** 0001");
-        int startValueCardTwo = DataGen.getBalanceCard("**** **** **** 0002");
-        var moneyTransfer = page.upToMoneyOnThisCard("**** **** **** 0001");
-        var enterAmount = moneyTransfer.transferMoney(String.valueOf(amountToTransfer), "5559 0000 0000 0002");
+        int startValueCardOne = DataGen.getFirstCard();
+        int startValueCardTwo = DataGen.getSecondCard();
+        var moneyTransfer = page.upToMoneyOnThisCard(DataGen.getFirstCardId());
+        var enterAmount = moneyTransfer.transferMoney(String.valueOf(amountToTransfer), DataGen.getSecondCardId());
         $(withText("Ваши карты")).shouldBe(visible);
         int expectedCardOne = startValueCardOne + amountToTransfer;
         int expectedCardTwo = startValueCardTwo - amountToTransfer;
-        assertEquals(expectedCardOne, DataGen.getBalanceCard("**** **** **** 0001"));
-        assertEquals(expectedCardTwo, DataGen.getBalanceCard("**** **** **** 0002"));
+        assertEquals(expectedCardOne, DataGen.getFirstCard());
+        assertEquals(expectedCardTwo, DataGen.getSecondCard());
 
     }
 
