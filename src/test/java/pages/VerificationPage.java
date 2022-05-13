@@ -1,6 +1,6 @@
 package pages;
 
-import dataGenerator.DataGen;
+import datagenerator.DataGen;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
 

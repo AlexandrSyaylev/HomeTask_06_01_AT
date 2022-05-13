@@ -1,7 +1,7 @@
 package ru.netology;
 
-import dataGenerator.DataGen;
-import org.junit.jupiter.api.Assertions;
+import datagenerator.DataGen;
+import pages.DashboardPage;
 import pages.LoginPage;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -26,17 +26,14 @@ public class AppIBankTest {
         var authUser = DataGen.getUserHardCode();
         var verificationPge = loginPage.validLogin(authUser);
         var page = verificationPge.validVerify(authUser);
-        int startValueCardOne = DataGen.getFirstCard();
-        int startValueCardTwo = DataGen.getSecondCard();
+        int startValueCardOne = new DashboardPage().getFirstCardBal();
+        int startValueCardTwo = new DashboardPage().getSecondCardBal();
         var moneyTransfer = page.upToMoneyOnThisCard(DataGen.getFirstSecretId());
         var enterAmount = moneyTransfer.transferMoney(String.valueOf(amountToTransfer), DataGen.getSecondCardId());
         $(withText("Ваши карты")).shouldBe(visible);
         int expectedCardOne = startValueCardOne + amountToTransfer;
         int expectedCardTwo = startValueCardTwo - amountToTransfer;
-        assertEquals(expectedCardOne, DataGen.getFirstCard());
-        assertEquals(expectedCardTwo, DataGen.getSecondCard());
-
+        assertEquals(expectedCardOne, new DashboardPage().getFirstCardBal());
+        assertEquals(expectedCardTwo, new DashboardPage().getSecondCardBal());
     }
-
-
 }
