@@ -36,4 +36,22 @@ public class AppIBankTest {
         assertEquals(expectedCardOne, new DashboardPage().getFirstCardBal());
         assertEquals(expectedCardTwo, new DashboardPage().getSecondCardBal());
     }
+
+    @Test
+    public void shouldGiveErrorWhenTransMoreThanAccountBalance() { //после выполения верхнего теста на счетах должно быть 9т и 11 тыс соответственнно, и этот тест должен падать
+        int amountToTransfer = 10000;
+        var loginPage = open("http://localhost:9999", LoginPage.class);
+        var authUser = DataGen.getUserHardCode();
+        var verificationPge = loginPage.validLogin(authUser);
+        var page = verificationPge.validVerify(authUser);
+        int startValueCardOne = new DashboardPage().getFirstCardBal();
+        int startValueCardTwo = new DashboardPage().getSecondCardBal();
+        var moneyTransfer = page.upToMoneyOnThisCard(DataGen.getFirstSecretId());
+        var enterAmount = moneyTransfer.transferMoney(String.valueOf(amountToTransfer), DataGen.getSecondCardId());
+        $(withText("Ваши карты")).shouldBe(visible);
+        int expectedCardOne = startValueCardOne + amountToTransfer;
+        int expectedCardTwo = startValueCardTwo - amountToTransfer;
+        assertEquals(expectedCardOne, new DashboardPage().getFirstCardBal());
+        assertEquals(expectedCardTwo, new DashboardPage().getSecondCardBal());
+    }
 }
