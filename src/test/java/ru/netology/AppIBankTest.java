@@ -26,15 +26,15 @@ public class AppIBankTest {
         var authUser = DataGen.getUserHardCode();
         var verificationPge = loginPage.validLogin(authUser);
         var page = verificationPge.validVerify(authUser);
-        int startValueCardOne = new DashboardPage().getFirstCardBal();
-        int startValueCardTwo = new DashboardPage().getSecondCardBal();
-        var moneyTransfer = page.upToMoneyOnThisCard(DataGen.getFirstSecretId());
-        var enterAmount = moneyTransfer.transferMoney(String.valueOf(amountToTransfer), DataGen.getSecondCardId());
+        int startValueCardOne = new DashboardPage().getCardBalance(DataGen.getFirstCard().getSecretCardId());
+        int startValueCardTwo = new DashboardPage().getCardBalance(DataGen.getSecondCard().getSecretCardId());
+        var moneyTransfer = page.upToMoneyOnThisCard(DataGen.getFirstCard().getSecretCardId());
+        var enterAmount = moneyTransfer.transferMoney(String.valueOf(amountToTransfer), DataGen.getSecondCard().getCardId());
         $(withText("Ваши карты")).shouldBe(visible);
         int expectedCardOne = startValueCardOne + amountToTransfer;
         int expectedCardTwo = startValueCardTwo - amountToTransfer;
-        assertEquals(expectedCardOne, new DashboardPage().getFirstCardBal());
-        assertEquals(expectedCardTwo, new DashboardPage().getSecondCardBal());
+        assertEquals(expectedCardOne, new DashboardPage().getCardBalance(DataGen.getFirstCard().getSecretCardId()));
+        assertEquals(expectedCardTwo, new DashboardPage().getCardBalance(DataGen.getSecondCard().getSecretCardId()));
     }
 
     @Test
@@ -44,14 +44,14 @@ public class AppIBankTest {
         var authUser = DataGen.getUserHardCode();
         var verificationPge = loginPage.validLogin(authUser);
         var page = verificationPge.validVerify(authUser);
-        int startValueCardOne = new DashboardPage().getFirstCardBal();
-        int startValueCardTwo = new DashboardPage().getSecondCardBal();
-        var moneyTransfer = page.upToMoneyOnThisCard(DataGen.getFirstSecretId());
-        var enterAmount = moneyTransfer.transferMoney(String.valueOf(amountToTransfer), DataGen.getSecondCardId());
+        int startValueCardOne = new DashboardPage().getCardBalance(DataGen.getFirstCard().getSecretCardId());
+        int startValueCardTwo = new DashboardPage().getCardBalance(DataGen.getSecondCard().getSecretCardId());
+        var moneyTransfer = page.upToMoneyOnThisCard(DataGen.getFirstCard().getSecretCardId());
+        var enterAmount = moneyTransfer.transferMoney(String.valueOf(amountToTransfer), DataGen.getSecondCard().getCardId());
         $(withText("Ваши карты")).shouldBe(visible);
         int expectedCardOne = startValueCardOne + amountToTransfer;
         int expectedCardTwo = startValueCardTwo - amountToTransfer;
-        assertEquals(expectedCardOne, new DashboardPage().getFirstCardBal());
-        assertEquals(expectedCardTwo, new DashboardPage().getSecondCardBal());
+        assertEquals(expectedCardOne, new DashboardPage().getCardBalance(DataGen.getFirstCard().getSecretCardId()));
+        assertEquals(expectedCardTwo, new DashboardPage().getCardBalance(DataGen.getSecondCard().getSecretCardId()));
     }
 }

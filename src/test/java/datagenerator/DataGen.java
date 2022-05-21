@@ -20,30 +20,20 @@ public class DataGen {
 
     @Value
     public static class Card {
-
-        private String firstSecretCardId = "**** **** **** 0001";
-        private String secondSecretCardId = "**** **** **** 0002";
-        private String firstCardId = "5559 0000 0000 0001";
-        private String secondCardId = "5559 0000 0000 0002";
+        String cardId;
+        String secretCardId;
     }
 
     public static UserAuth getUserHardCode() {
         return new UserAuth("vasya", "qwerty123", "12345");
     }
 
-    public static String getFirstCardId() {
-        return new Card().firstCardId;
+    public static Card getFirstCard() {
+        return new Card("5559 0000 0000 0001", "**** **** **** 0001");
     }
 
-    public static String getSecondCardId() {
-        return new Card().secondCardId;
+    public static Card getSecondCard() {
+        return new Card("5559 0000 0000 0002", "**** **** **** 0002");
     }
 
-    public static String getFirstSecretId() {
-        return new Card().firstSecretCardId;
-    }
-
-    public static String getSecondSecretId() {
-        return new Card().secondSecretCardId;
-    }
 }
